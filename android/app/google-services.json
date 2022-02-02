@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "430492206482",
+    "project_id": "loan-app-e746f",
+    "storage_bucket": "loan-app-e746f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:430492206482:android:a1bafa3a119c2f45096d4b",
+        "android_client_info": {
+          "package_name": "com.nerdyapproach.flutter_loan_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "430492206482-ab0uksbv4q8bak3qesnne40n2266t8is.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABAbOBLQG2DaIs72C3JzkzxhYOLc_exq4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "430492206482-ab0uksbv4q8bak3qesnne40n2266t8is.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
