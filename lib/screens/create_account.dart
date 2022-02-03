@@ -28,6 +28,16 @@ class _CreateAccountState extends State<CreateAccount> {
   }
 
   @override
+  void dispose() {
+    nameController.dispose();
+    nationalIDController.dispose();
+    dateController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
