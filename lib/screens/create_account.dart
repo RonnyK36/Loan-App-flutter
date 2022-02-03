@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_loan_app/configurations/config.dart';
+import 'package:flutter_loan_app/screens/bottom_navigation.dart';
 import 'package:flutter_loan_app/widgets/reusable_button.dart';
 import 'package:flutter_loan_app/widgets/text_field.dart';
 
@@ -33,31 +34,25 @@ class _CreateAccountState extends State<CreateAccount> {
         title: const Text("Create an Account"),
         centerTitle: true,
       ),
-      body: SafeArea(
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: SafeArea(
           child: Container(
             width: double.infinity,
             padding: const EdgeInsets.only(top: 10, left: 20, right: 20),
             child: Column(
               children: [
-                // Column(
-                //   children: [
-                //     // const SizedBox(height: 10),
-                //     Text("Verified 0${widget.phone} 😍!", style: kTitlesTextStyle),
-                //     const SizedBox(height: 10),
-                //     const Text("Give us few more details about you: ",
-                //         style: kInforText),
-                //   ],
-                // ),
-                Flexible(child: Container(), flex: 1),
-
+                Text("Verified 0${widget.phone} 😍!", style: kTitlesTextStyle),
+                const SizedBox(height: 40),
+                const Text("Give us few more details about you: ",
+                    style: kInforText),
+                const SizedBox(height: 20),
                 TextFieldInput(
                   textEditingController: nameController,
                   hintText: "Kelvin Rono",
                   maxLength: 80,
                   prefix: "",
                   labelText: "Full Legal Name",
-                  textInputType: TextInputType.name,
+                  textInputType: TextInputType.text,
                 ),
                 TextFieldInput(
                   textEditingController: dateController,
@@ -84,17 +79,24 @@ class _CreateAccountState extends State<CreateAccount> {
                   labelText: "Email Address",
                   textInputType: TextInputType.emailAddress,
                 ),
-                // TextFieldInput(
-                //   textEditingController: passwordController,
-                //   hintText: "8+ Characters",
-                //   maxLength: 16,
-                //   prefix: "",
-                //   labelText: "Password",
-                //   isPassword: true,
-                //   textInputType: TextInputType.visiblePassword,
-                // ),
-                // Flexible(child: Container(), flex: 2),
-                reusableButton(onPressed: () {}, label: "Create Account"),
+                TextFieldInput(
+                  textEditingController: passwordController,
+                  hintText: "8+ Characters",
+                  maxLength: 16,
+                  prefix: "",
+                  labelText: "Password",
+                  isPassword: true,
+                  textInputType: TextInputType.visiblePassword,
+                ),
+                reusableButton(
+                    onPressed: () {
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const BottomNavigation()),
+                          (route) => false);
+                    },
+                    label: "Create Account"),
               ],
             ),
           ),

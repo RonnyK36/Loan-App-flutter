@@ -37,17 +37,16 @@ class TextFieldInput extends StatelessWidget {
       controller: textEditingController,
       maxLength: maxLength,
       decoration: InputDecoration(
-        labelText: labelText,
-        hintText: hintText,
-        prefix: Padding(
-          padding: const EdgeInsets.all(4),
-          child: Text(prefix),
-        ),
-        border: inputBorder,
-        focusedBorder: inputBorder,
-        filled: true,
-        contentPadding: const EdgeInsets.all(10),
-      ),
+          labelText: labelText,
+          hintText: hintText,
+          prefix: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4),
+            child: Text(prefix),
+          ),
+          border: inputBorder,
+          focusedBorder: inputBorder,
+          filled: true,
+          contentPadding: const EdgeInsets.symmetric(horizontal: 10)),
       keyboardType: textInputType,
       obscureText: isPassword,
     );
