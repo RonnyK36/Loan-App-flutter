@@ -35,6 +35,7 @@ class _PhoneVerificationState extends State<PhoneVerification> {
               TextFieldInput(
                 textEditingController: phoneNumberController,
                 labelText: "Phone number",
+                maxLength: 9,
                 prefix: "(+254)",
                 hintText: "727447786",
                 textInputType: TextInputType.phone,

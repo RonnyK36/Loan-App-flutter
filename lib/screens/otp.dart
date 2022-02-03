@@ -73,7 +73,9 @@ class _OTPScreenState extends State<OTPScreen> {
                       Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
-                              builder: (c) => const CreateAccount()),
+                              builder: (c) => CreateAccount(
+                                    phone: widget.phone,
+                                  )),
                           (route) => false);
                       print("Home Screen");
                     }
@@ -105,7 +107,10 @@ class _OTPScreenState extends State<OTPScreen> {
               // Go to create account screen
               Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(builder: (c) => const CreateAccount()),
+                  MaterialPageRoute(
+                      builder: (c) => CreateAccount(
+                            phone: widget.phone,
+                          )),
                   (route) => false);
               print("User logged in");
             }

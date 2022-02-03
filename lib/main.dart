@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_loan_app/screens/create_account.dart';
 import 'package:flutter_loan_app/screens/phone_verification.dart';
 
 void main() async {
@@ -18,9 +19,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Lenders',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
       ),
       home: const PhoneVerification(),
+      // home: const CreateAccount(),
     );
   }
 }
