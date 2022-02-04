@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_loan_app/configurations/config.dart';
+import 'package:flutter_loan_app/configurations/utils.dart';
 import 'package:flutter_loan_app/screens/bottom_navigation.dart';
+import 'package:flutter_loan_app/services/auth_methods.dart';
 import 'package:flutter_loan_app/widgets/reusable_button.dart';
 import 'package:flutter_loan_app/widgets/text_field.dart';
 
@@ -21,6 +23,7 @@ class _CreateAccountState extends State<CreateAccount> {
   TextEditingController passwordController = TextEditingController();
   String? uid;
   String? phone;
+  bool _isLoading = false;
   @override
   void initState() {
     super.initState();
@@ -35,6 +38,32 @@ class _CreateAccountState extends State<CreateAccount> {
     emailController.dispose();
     passwordController.dispose();
     super.dispose();
+  }
+
+  void createUser() async {
+    setState(() {
+      _isLoading = true;
+    });
+    String result = await Auth().createNewUser(
+      phone: "0${widget.phone}",
+      fullName: nameController.text,
+      nationalID: nationalIDController.text,
+      date: dateController.text,
+      email: emailController.text,
+      password: passwordController.text,
+    );
+
+    setState(() {
+      _isLoading = false;
+    });
+
+    if (result != "success") {
+      snackBar(content: result, context: context);
+    }
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => const BottomNavigation()),
+        (route) => false);
   }
 
   @override
@@ -98,15 +127,21 @@ class _CreateAccountState extends State<CreateAccount> {
                   isPassword: true,
                   textInputType: TextInputType.visiblePassword,
                 ),
-                reusableButton(
-                    onPressed: () {
-                      Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const BottomNavigation()),
-                          (route) => false);
-                    },
-                    label: "Create Account"),
+                _isLoading
+                    ? Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.symmetric(vertical: 9),
+                        decoration: BoxDecoration(
+                            color: Theme.of(context).primaryColor,
+                            borderRadius: BorderRadius.circular(25)),
+                        child: const Center(
+                          child: CircularProgressIndicator(
+                            color: Colors.white,
+                          ),
+                        ),
+                      )
+                    : reusableButton(
+                        onPressed: createUser, label: "Create Account"),
               ],
             ),
           ),

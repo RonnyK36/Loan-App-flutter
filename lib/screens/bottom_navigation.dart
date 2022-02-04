@@ -11,7 +11,7 @@ class BottomNavigation extends StatefulWidget {
 }
 
 class _BottomNavigationState extends State<BottomNavigation> {
-  int currentIndex = 1;
+  int currentIndex = 0;
 
   final screens = const [HomeScreen(), LoansScreen(), ProfileScreen()];
   @override
